@@ -1,15 +1,5 @@
 package com.visaRuleEngine;
-
-    /*
-    •	boolean visaRequired
-	•	VisaType (enum)
-	•	List<DocumentType>
-	•	int estimatedProcessingDays
-	•	List<String> warnings
-    
-    */
-    
-    import java.util.List;
+import java.util.List;
 
 import com.visaRuleEngine.enums.DocumentType;
 import com.visaRuleEngine.enums.VisaType;
