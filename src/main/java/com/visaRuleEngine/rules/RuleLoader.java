@@ -1,3 +1,4 @@
+/*
 package com.visaRuleEngine.rules;
 
 //RuleLoader (reads config)
@@ -33,7 +34,7 @@ public final class RuleLoader {
     private final Map<String, Rule> rulesCache;
     
    
-    private RuleLoader(String jsonFilePath) throws IOException {
+    public RuleLoader(String jsonFilePath) throws IOException {
         this.rulesCache = new HashMap<>();
         loadAndIndexRules(jsonFilePath);
     }
@@ -144,3 +145,132 @@ public Rule getRule(Country destinationCountry, Country passportCountry, TravelP
     }
 }
 
+*/
+package com.visaRuleEngine.rules;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.visaRuleEngine.enums.Country;
+import com.visaRuleEngine.enums.DocumentType;
+import com.visaRuleEngine.enums.TravelPurpose;
+import com.visaRuleEngine.enums.VisaType;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public final class RuleLoader {
+    
+    private final Map<String, Rule> rulesCache;
+    
+    // Changed to public so Main.java can instantiate it
+    public RuleLoader(String jsonFilePath) throws IOException {
+        this.rulesCache = new HashMap<>();
+        loadAndIndexRules(jsonFilePath);
+    }
+    
+    private void loadAndIndexRules(String filePath) throws IOException {
+        try (FileReader reader = new FileReader(filePath)) {
+            Gson gson = new Gson();
+            JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
+            
+            for (JsonElement element : jsonArray) {
+                JsonObject json = element.getAsJsonObject();
+                
+                String passportCountry = json.get("passportCountry").getAsString();
+                String destinationCountry = json.get("destinationCountry").getAsString();
+                
+                Rule ruleData = parseRuleData(json);
+                
+                String key = createCacheKey(passportCountry, destinationCountry);
+                rulesCache.put(key, ruleData);
+            }
+            System.out.println("Loaded " + rulesCache.size() + " rules into cache.");
+        }
+    }
+    
+    private Rule parseRuleData(JsonObject json) {
+        Rule data = new Rule();
+        data.ruleId = json.get("ruleId").getAsInt();
+        data.passportCountry = Country.valueOf(json.get("passportCountry").getAsString().toUpperCase());
+        data.destinationCountry = Country.valueOf(json.get("destinationCountry").getAsString().toUpperCase());
+        
+        // Handle boolean parsing flexibly
+        data.visaRequired = Boolean.parseBoolean(json.get("VisaRequired").getAsString());
+        
+        data.estimatedProcessingTime = Integer.parseInt(json.get("estimatedProcessingTime").getAsString());
+
+        // Parse Visa Types with normalization
+        data.visaTypes = new ArrayList<>();
+        JsonArray visaTypeArray = json.getAsJsonArray("visaType");
+        for (JsonElement ve : visaTypeArray) {
+            data.visaTypes.add(parseVisaType(ve.getAsString()));
+        }
+
+        // Parse Document Types with normalization
+        data.documentsRequired = new ArrayList<>();
+        JsonArray docArray = json.getAsJsonArray("documentRequired");
+        for (JsonElement de : docArray) {
+            data.documentsRequired.add(parseDocumentType(de.getAsString()));
+        }
+        
+        // Parse Warnings
+        data.warnings = new ArrayList<>();
+        if (json.has("warnings")) {
+            for (JsonElement w : json.getAsJsonArray("warnings")) {
+                data.warnings.add(w.getAsString());
+            }
+        }
+
+        return data;
+    }
+
+    private VisaType parseVisaType(String value) {
+        // "Tourist Visa" -> "TOURIST_VISA"
+        // "Pre-Arrival Registration" -> "PRE_ARRIVAL_REGISTRATION"
+        String normalized = value.trim()
+                                 .toUpperCase()
+                                 .replace(" ", "_")
+                                 .replace("-", "_");
+        try {
+            return VisaType.valueOf(normalized);
+        } catch (IllegalArgumentException e) {
+            System.err.println("CRITICAL WARNING: Unknown Visa Type found in JSON: '" + value + "'. Defaulting to NULL.");
+            throw e; // Or handle gracefully depending on requirement
+        }
+    }
+
+    private DocumentType parseDocumentType(String value) {
+        String input = value.trim();
+        
+        // 1. Manual mapping for inconsistencies in rules.json
+        if (input.equalsIgnoreCase("Photograph")) return DocumentType.PHOTO;
+        if (input.equalsIgnoreCase("bankStatement")) return DocumentType.BANK_STATEMENT;
+        if (input.equalsIgnoreCase("TravelInsurance")) return DocumentType.TRAVEL_INSURANCE;
+        if (input.equalsIgnoreCase("ReturnTicket")) return DocumentType.FLIGHT_TICKET;
+        
+        // 2. Standard Conversion (CamelCase to CONSTANT_CASE if needed, or just Upper)
+        // "Passport" -> "PASSPORT"
+        String normalized = input.toUpperCase();
+        
+        try {
+            return DocumentType.valueOf(normalized);
+        } catch (IllegalArgumentException e) {
+             System.err.println("CRITICAL WARNING: Unknown Document Type found in JSON: '" + value + "'");
+             throw e;
+        }
+    }
+
+    private String createCacheKey(String passportCountry, String destinationCountry) {
+        return passportCountry.toUpperCase() + "_" + destinationCountry.toUpperCase();
+    }
+    
+    public Rule getRule(Country destinationCountry, Country passportCountry, TravelPurpose travelPurpose) {
+        String key = createCacheKey(passportCountry.name(), destinationCountry.name());
+        return rulesCache.get(key);
+    }
+}

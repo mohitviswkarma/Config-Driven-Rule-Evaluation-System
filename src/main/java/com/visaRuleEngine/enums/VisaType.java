@@ -1,5 +1,6 @@
 package com.visaRuleEngine.enums;
 public enum VisaType {
+  VISA,
     TOURIST_VISA,
     BUSINESS_VISA,
     STUDENT_VISA,
@@ -7,4 +8,10 @@ public enum VisaType {
     E_VISA,
     VISA_ON_ARRIVAL,
   //  MULTI_ENTRY_VISA
+  VISA_FREE,
+    PERMIT_ON_ARRIVAL,
+    PRE_ARRIVAL_REGISTRATION,
+    SCHENGEN_TOURIST_VISA,
+    STANDARD_VISITOR_VISA,
+    VISITOR_VISA
 }
