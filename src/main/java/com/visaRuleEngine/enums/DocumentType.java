@@ -1,0 +1,14 @@
+package com.visaRuleEngine.enums;
+public enum DocumentType {
+    PASSPORT,
+    PHOTO,
+    DRIVER_LICENSE,
+    BIRTH_CERTIFICATE,
+    RESIDENCE_PERMIT,
+    AADHAAR_CARD,
+    HOTEL_BOOKING,
+    FLIGHT_TICKET,
+    TRAVEL_INSURANCE,
+    BANK_STATEMENT,
+    EMPLOYMENT_LETTER,
+}

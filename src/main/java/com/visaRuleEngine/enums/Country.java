@@ -1,0 +1,17 @@
+package com.visaRuleEngine.enums;
+public enum Country {
+SINGAPORE,
+VIETNAM,
+AUSTRALIA,
+MALAYSIA,
+THAILAND,
+INDONESIA,
+PHILIPPINES,
+CAMBODIA,
+BHUTAN,
+NEPAL,
+USA,
+CANADA,
+MEXICO,
+BRAZIL,
+}

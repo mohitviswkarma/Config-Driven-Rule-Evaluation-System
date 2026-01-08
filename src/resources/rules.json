@@ -1,0 +1,183 @@
+
+//eVisa, visa on arrival
+//tourist visa, business visa, student visa, work visa
+
+[   
+    
+{   "ruleId": 1,
+"passportCountry":"INDIA",
+"destinationCountry": "SINGAPORE",
+"VisaRequired": "true",
+"visaType":["Tourist Visa"],
+"documentRequired": ["Passport","bankStatement","Photograph"],
+"estimatedProcessingTime": "30",
+"warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+            "Check for any travel advisories before planning your trip."]
+},
+    {
+      "ruleId": 2,
+      "passportCountry": "INDIA",
+      "destinationCountry": "THAILAND",
+      "VisaRequired": "true",
+      "visaType": ["Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "25",
+      "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+            "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 3,
+      "passportCountry": "INDIA",
+      "destinationCountry": "MALAYSIA",
+      "VisaRequired": "true",
+      "visaType": ["Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "20",
+      "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+            "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 4,
+      "passportCountry": "INDIA",
+      "destinationCountry": "INDONESIA",
+      "VisaRequired": "true",
+      "visaType": ["Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "21",
+      "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+            "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 5,
+      "passportCountry": "INDIA",
+      "destinationCountry": "PHILIPPINES",
+      "VisaRequired": "true",
+      "visaType": ["Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "30",
+      "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+            "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 6,
+      "passportCountry": "INDIA",
+      "destinationCountry": "CAMBODIA",
+      "VisaRequired": "true",
+      "visaType": ["Tourist Visa"],
+      "documentRequired": ["Passport", "Photograph"],
+      "estimatedProcessingTime": "15",
+      "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+            "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 7,
+      "passportCountry": "INDIA",
+      "destinationCountry": "BHUTAN",
+      "VisaRequired": "false",
+      "visaType": ["Permit on Arrival"],
+      "documentRequired": ["Passport"],
+      "estimatedProcessingTime": "0",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 8,
+      "passportCountry": "INDIA",
+      "destinationCountry": "NEPAL",
+      "VisaRequired": "false",
+      "visaType": ["Visa Free"],
+      "documentRequired": ["Passport"],
+      "estimatedProcessingTime": "0",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 9,
+      "passportCountry": "INDIA",
+      "destinationCountry": "JAPAN",
+      "VisaRequired": "true",
+      "visaType": ["Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "10",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 10,
+      "passportCountry": "INDIA",
+      "destinationCountry": "HONG KONG",
+      "VisaRequired": "true",
+      "visaType": ["Pre-Arrival Registration"],
+      "documentRequired": ["Passport"],
+      "estimatedProcessingTime": "7",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 11,
+      "passportCountry": "INDIA",
+      "destinationCountry": "MALDIVES",
+      "VisaRequired": "false",
+      "visaType": ["Visa on Arrival"],
+      "documentRequired": ["Passport", "ReturnTicket"],
+      "estimatedProcessingTime": "0",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 12,
+      "passportCountry": "INDIA",
+      "destinationCountry": "FRANCE",
+      "VisaRequired": "true",
+      "visaType": ["Schengen Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "TravelInsurance", "Photograph"],
+      "estimatedProcessingTime": "30",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 13,
+      "passportCountry": "INDIA",
+      "destinationCountry": "ITALY",
+      "VisaRequired": "true",
+      "visaType": ["Schengen Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "TravelInsurance", "Photograph"],
+      "estimatedProcessingTime": "28",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 14,
+      "passportCountry": "INDIA",
+      "destinationCountry": "SPAIN",
+      "VisaRequired": "true",
+      "visaType": ["Schengen Tourist Visa"],
+      "documentRequired": ["Passport", "bankStatement", "TravelInsurance", "Photograph"],
+      "estimatedProcessingTime": "25",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                    "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 15,
+      "passportCountry": "INDIA",
+      "destinationCountry": "UNITED KINGDOM",
+      "VisaRequired": "true",
+      "visaType": ["Standard Visitor Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "21",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                    "Check for any travel advisories before planning your trip."]
+    },
+    {
+      "ruleId": 16,
+      "passportCountry": "INDIA",
+      "destinationCountry": "AUSTRALIA",
+      "VisaRequired": "true",
+      "visaType": ["Visitor Visa"],
+      "documentRequired": ["Passport", "bankStatement", "Photograph"],
+      "estimatedProcessingTime": "35",
+        "warnings":["Ensure your passport is valid for at least six months from the date of entry.",
+                    "Check for any travel advisories before planning your trip."]
+    }
+  ]
+  
